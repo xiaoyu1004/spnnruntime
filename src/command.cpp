@@ -1,6 +1,7 @@
 #include "command.h"
 #include "setting/params.h"
 #include "log.h"
+#include "allocator.h"
 
 #define DATAWRITELENGTH 128
 
@@ -21,11 +22,7 @@ namespace spnnruntime
             SPNN_LOG_FATAL(SPNN_ROOT_LOGGER) << "posix memalign error!";
         }
 #else
-        int ret = posix_memalign((void **)&m_head, 4096, 10 + 4096);
-        if (ret != 0)
-        {
-            SPNN_LOG_FATAL(SPNN_ROOT_LOGGER) << "posix memalign error!";
-        }
+        m_head = (unsigned char *)cpuMalloc(10);
 #endif
     }
 
