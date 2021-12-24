@@ -260,6 +260,7 @@ namespace spnnruntime
             return -1;
         }
 
+#if USE_CHECK
         void check(std::vector<Mission> &tops, Layer::ptr layer)
         {
             Mission &m = tops[0];
@@ -287,6 +288,7 @@ namespace spnnruntime
                 }
             }
         }
+#endif
 
         void forward(Layer::ptr layer, const Option &opt)
         {
@@ -332,7 +334,9 @@ namespace spnnruntime
                 layer->forward(bottoms, tops, opt);
                 layer->streamsync();
                 // SPNN_LOG_INFO(SPNN_ROOT_LOGGER) << "layer name = " << layer->m_name << " mission count = " << layer->mcount() << " mid = " << tops[0].mid;
+#if USE_CHECK
                 check(tops, layer);
+#endif
                 if (layer == m_layers.front() && tops[0].datatype == DataType::report)
                 {
                     m_ex->pushMission(tops[0]);

@@ -7,11 +7,6 @@
 
 #include <cstdlib>
 
-#if defined(_MSC_VER)
-// #define WIN32_LEAN_AND_MEAN
-// #include <windows.h>
-#endif
-
 namespace spnnruntime
 {
 #define SPNN_MALLOC_ALIGN 16

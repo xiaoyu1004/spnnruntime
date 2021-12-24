@@ -59,7 +59,7 @@ namespace spnnruntime
     {
         for (std::uint32_t i = 0; i < len; ++i)
         {
-            if ((a[i] - b[i]) >= 1e-2f)
+            if ((a[i] - b[i]) >= epsilon)
             {
                 SPNN_LOG_ERROR(SPNN_ROOT_LOGGER) << "ERROR! a[" << i << "]" << a[i] << " != b[" << i << "]" << b[i] << "  error is : " << a[i] - b[i] << "  layer : " << file;
                 return false;
@@ -113,15 +113,15 @@ namespace spnnruntime
         T *f_data = new T[N];
         CHECK_READ(fread(f_data, sizeof(T), N, fd));
         fclose(fd);
-        // bool bTestResult = CompareL2fe<T>(f_data, data, N, 1e-5f);
-        bool bTestResult = CompareVal<T>(f_data, data, N, file, 1e-5f);
+        // bool bTestResult = CompareL2fe<T>(f_data, data, N, 1e-2f);
+        bool bTestResult = CompareVal<T>(f_data, data, N, file, 1e-2f);
         delete[] f_data;
         if (bTestResult)
         {
-            SPNN_LOG_INFO(SPNN_ROOT_LOGGER) << "check [" << filepath << "] data pass!";
+            SPNN_LOG_INFO(SPNN_ROOT_LOGGER) << "check [" << filepath << "] pass!";
             return;
         }
-        SPNN_LOG_FATAL(SPNN_ROOT_LOGGER) << "check [" << filepath << "] data failed!";
+        SPNN_LOG_FATAL(SPNN_ROOT_LOGGER) << "check [" << filepath << "] failed!";
     }
 #else
 #define CHECK_DATA(data, length, file)
