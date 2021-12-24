@@ -1,0 +1,11 @@
+7767517
+8 8
+Input            data             0 1 data
+RemoveDC         rdc1             1 1 data rdc1
+PulseCompress    pc1              1 1 rdc1 pc1
+Hamming          hamming1         1 1 pc1 hamming1
+MoveDetector     mtd1             1 1 hamming1 mtd1
+UnaryOp          unary1           1 1 mtd1 unary1
+PaddingMirror    pad1             1 1 unary1 pad1
+Integral         integral1        1 1 pad1 integral1
+CfarOp           cacfar1          2 1 unary1 integral1 cacfar1

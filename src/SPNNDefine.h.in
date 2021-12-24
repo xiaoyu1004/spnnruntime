@@ -1,0 +1,22 @@
+#ifndef SPNN_DEFINE_H
+#define SPNN_DEFINE_H
+
+#include <iostream>
+#include <cassert>
+#include <cstdint>
+
+#include "export.h"
+
+#cmakedefine01 USE_INTER
+#cmakedefine01 USE_CHECK
+
+#define SPNN_ASSERT(x, msg, ...)                       \
+    if (!(x))                                          \
+    {                                                  \
+        printf("Error for %s %d", __FILE__, __LINE__); \
+        printf(msg, ##__VA_ARGS__);                    \
+        printf("\n");                                  \
+        assert(x);                                     \
+    }
+
+#endif

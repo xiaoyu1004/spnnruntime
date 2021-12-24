@@ -1,0 +1,13 @@
+7767517
+11 11
+Input            data            0 1 data
+RemoveDC         rdc             1 1 data rdc
+PulseCompress    pc              1 1 rdc pc
+Hamming          hamming         1 1 pc hamming
+MoveDetector     mtd             1 1 hamming mtd
+AbsVal           abs             1 1 mtd abs
+PaddingMirror    pad             1 1 abs pad
+Integral         integral        1 1 pad integral
+CfarOp           cacfar          2 1 abs integral cfar
+BinaryOp         binaryop        2 1 abs cfar binaryop 0=2
+ClusterOp        clustering      1 1 binaryop clustering

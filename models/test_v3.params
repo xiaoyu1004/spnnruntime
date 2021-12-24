@@ -1,0 +1,6 @@
+7767517
+4 4
+Input            data             0 1 data
+RemoveDC         rdc1             1 1 data rdc1
+PulseCompress    pc1              1 1 rdc1 pc1
+CfarOp           cacfar1          2 1 data pc1 cacfar1

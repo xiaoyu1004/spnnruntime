@@ -1,0 +1,1 @@
+set(module_name benchmark)
