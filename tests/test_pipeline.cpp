@@ -15,7 +15,7 @@ static int testLoadParam()
 
     spnnruntime::ToDataProc proc;
     std::uint32_t cnt = 0;
-    while (cnt++ <= 2000)
+    while (cnt++ <= 160000)
     {
         ex->extract(&proc);
     }

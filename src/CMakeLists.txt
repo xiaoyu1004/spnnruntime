@@ -57,7 +57,7 @@ target_include_directories(spnnruntime
 
 target_link_directories(spnnruntime PRIVATE ${CUDA_LIBRARY_DIRS})
 
-target_link_libraries(spnnruntime cufft)
+target_link_libraries(spnnruntime cudart cufft)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	target_compile_definitions(spnnruntime PRIVATE -DEXPORT_SPNNRUNTIME)

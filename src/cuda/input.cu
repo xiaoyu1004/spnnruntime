@@ -38,7 +38,7 @@ namespace spnnruntime
         m.mid = m_missionId++;
         m.blobIndex = m_tops[0];
 
-        if (m.mid >= 2000)
+        if (m.mid >= 160000)
         {
             m_terminate = true;
         }

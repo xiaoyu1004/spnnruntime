@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(spnnruntime C CXX)
 
+option(BUILD_ILUVATAR "BUILD ILUVATAR" OFF)
 option(SPNN_BUILD_SHARED "spnnruntime build shared or static lib" ON)
 option(SPNN_BUILD_TESTS "spnnruntime build tests" ON)
 option(USE_INTER "read inter" OFF)
@@ -12,8 +13,14 @@ if((NOT (CMAKE_BUILD_TYPE STREQUAL "Debug")) AND (NOT (CMAKE_BUILD_TYPE STREQUAL
 endif()
 message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 
+message(STATUS "BUILD_ILUVATAR = ${BUILD_ILUVATAR}")
+
+if(GNU)
+    set(CMAKE_C_COMPILER "/usr/bin/gcc")
+    set(CMAKE_CXX_COMPILER "/usr/bin/g++")
+endif()
+
 if((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") OR (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
-    # add_compile_options(-fPIC -Wall -Werror)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -Werror")
     if(CMAKE_BUILD_TYPE STREQUAL "Release")
 		set(CMAKE_CXX_VISIBILITY_PRESET hidden)
